@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+import json
 from rest_framework.decorators import api_view
 
 
 @api_view(['POST'])
 def register(request):
-    print(request)
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    print(body['username'])
 
     return HttpResponse('hello')
