@@ -8,6 +8,9 @@ from rest_framework.decorators import api_view
 def register(request):
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
+    print(f'body: {body}')
+
     print(body['username'])
+    print(body['password'])
 
     return HttpResponse('hello')
