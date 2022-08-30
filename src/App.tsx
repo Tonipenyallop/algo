@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Button variant="primary" className="btn-primary">
         Click
       </Button>
+      <Login />
     </div>
   );
 }
