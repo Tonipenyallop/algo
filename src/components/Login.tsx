@@ -7,8 +7,8 @@ export default function Login() {
       username: "toni",
       password: "secret",
     };
-    const registerResponse = axios.post("/register", registerRequest);
-    console.log(registerResponse);
+    const registerResponse = await axios.post("/register", registerRequest);
+    console.log(registerResponse.data);
   };
 
   return (
