@@ -34,6 +34,7 @@ python manage.py runserver
 
 **Now ready to go👍**
 
+# Etc.
 make migrate
 ```
 python manage.py makemigrations NAME_OF_FILE
