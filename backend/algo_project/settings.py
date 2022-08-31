@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bu3zn+=i1@wiy&gd*4w%)1w(y9ks(jg8pg*2!57(rjvw5!!bj)'
+# SECRET_KEY = 'django-insecure-bu3zn+=i1@wiy&gd*4w%)1w(y9ks(jg8pg*2!57(rjvw5!!bj)'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,7 +81,14 @@ WSGI_APPLICATION = 'algo_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
         'NAME': BASE_DIR / 'db.sqlite3',
+
+        #  'NAME': os.environ.get('NAME'),
+        #         'USER': os.environ.get('USER'),
+        #         'PASSWORD': os.environ.get('PASSWORD'),
+        #         'HOST': os.environ.get('HOST'),
+        #         'PORT': os.environ.get('PORT'),
     }
 }
 
