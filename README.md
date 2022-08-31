@@ -57,3 +57,7 @@ create superuser
 ```
 python manage.py createsuperuser
 ```
+
+# How to connect Django with Postgres?
+
+click here[https://dev.to/dennisivy11/easiest-django-postgres-connection-ever-with-railway-11h6]
