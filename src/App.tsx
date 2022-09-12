@@ -70,16 +70,8 @@ function App() {
         {arr.map((e, row) => {
           return (
             <div className="flex" key={row}>
-              {e.map((el: number, col: number) => {
+              {e.map((_: number, col: number) => {
                 return <Node row={row} col={col} />;
-                // if (el === 4)
-                //   return <div className="flex bg-green-500">{el}</div>;
-                // if (el === 1) return <div className="flex bg-black">{el}</div>;
-                // if (el === 5)
-                //   return <div className="flex bg-yellow-300">{el}</div>;
-                // if (el === 3)
-                //   return <div className="flex bg-blue-600">{el}</div>;
-                // else return <div className="flex">{el}</div>;
               })}
             </div>
           );
