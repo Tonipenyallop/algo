@@ -29,10 +29,10 @@ function App() {
     [0, 0, 0, 0, 0],
   ];
   enum color {
-    four = "start",
-    three = "visited",
-    five = "goal",
-    one = "block",
+    START = "start",
+    VISITED = "visited",
+    GOAL = "goal",
+    BLOCK = "block",
   }
   arr[0][0] = 4;
   arr[2][2] = 1;
@@ -42,6 +42,23 @@ function App() {
   arr[4][4] = 5;
 
   dfs(arr);
+
+  useEffect(() => {
+    changeColor(0, 0, color.START);
+    changeColor(3, 3, color.GOAL);
+    changeColor(2, 2, color.BLOCK);
+    changeColor(1, 2, color.BLOCK);
+    changeColor(4, 2, color.BLOCK);
+    changeColor(2, 2, color.BLOCK);
+    changeColor(2, 2, color.BLOCK);
+  });
+
+  const changeColor = (row: number, col: number, action: string) => {
+    const nodeElement = document.getElementById(`${row}-${col}`);
+    if (action === color.START) nodeElement?.classList.add("bg-blue-200");
+    if (action === color.GOAL) nodeElement?.classList.add("bg-yellow-200");
+    if (action === color.BLOCK) nodeElement?.classList.add("bg-blue-400");
+  };
 
   return (
     <div className="">
