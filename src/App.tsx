@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Login from "./components/Login";
 import Node from "./components/Node";
 import "./input.css";
+import bfs from "./methods/bfs";
 function App() {
   const [update, setUpdate] = useState("");
 
@@ -34,12 +35,6 @@ function App() {
     GOAL = "goal",
     BLOCK = "block",
   }
-  arr[0][0] = 4;
-  arr[2][2] = 1;
-  arr[1][2] = 1;
-  arr[3][3] = 1;
-  arr[4][2] = 1;
-  arr[4][4] = 5;
 
   dfs(arr);
 
@@ -51,6 +46,7 @@ function App() {
     changeColor(4, 2, color.BLOCK);
     changeColor(2, 2, color.BLOCK);
     changeColor(2, 2, color.BLOCK);
+    bfs(<Node row={1} col={2}></Node>);
   });
 
   const changeColor = (row: number, col: number, action: string) => {
@@ -67,11 +63,11 @@ function App() {
       </button>
 
       <div className=" flex flex-col items-center justify-center mt-6">
-        {arr.map((e, row) => {
+        {arr.map((e: number[], row: number) => {
           return (
             <div className="flex" key={row}>
               {e.map((_: number, col: number) => {
-                return <Node row={row} col={col} />;
+                return <Node row={row} col={col} key={`${row}-${col}`} />;
               })}
             </div>
           );
