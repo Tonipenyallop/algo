@@ -58,9 +58,8 @@ function App() {
 
   return (
     <div className="">
-      <button className=" bg-slate-400 rounded-lg mx-2 my-2 px-2 py-2">
-        Create 2d array
-      </button>
+      <button className="buttons">Create 2d array</button>
+      <button className="buttons">Start BFS</button>
 
       <div className=" flex flex-col items-center justify-center mt-6">
         {arr.map((e: number[], row: number) => {
