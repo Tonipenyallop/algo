@@ -46,7 +46,6 @@ function App() {
     changeColor(4, 2, color.BLOCK);
     changeColor(2, 2, color.BLOCK);
     changeColor(2, 2, color.BLOCK);
-    bfs(<Node row={1} col={2}></Node>);
   });
 
   const changeColor = (row: number, col: number, action: string) => {
@@ -59,7 +58,14 @@ function App() {
   return (
     <div className="">
       <button className="buttons">Create 2d array</button>
-      <button className="buttons">Start BFS</button>
+      <button
+        className="buttons"
+        onClick={() => {
+          bfs(<Node row={1} col={1}></Node>);
+        }}
+      >
+        Start BFS
+      </button>
 
       <div className=" flex flex-col items-center justify-center mt-6">
         {arr.map((e: number[], row: number) => {
