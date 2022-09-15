@@ -5,8 +5,6 @@ import Node from "./components/Node";
 import "./input.css";
 import bfs from "./methods/bfs";
 function App() {
-  const [update, setUpdate] = useState("");
-
   const dfs = (matrix: number[][]): boolean => {
     const [ROWS, COLS] = [matrix.length, matrix[0].length];
 
@@ -34,12 +32,14 @@ function App() {
     VISITED = "visited",
     GOAL = "goal",
     BLOCK = "block",
+    DEFAULT = "default",
   }
 
-  dfs(arr);
+  // dfs(arr);
 
   useEffect(() => {
     changeColor(0, 0, color.START);
+    changeColor(0, 1, color.VISITED);
     changeColor(3, 3, color.GOAL);
     changeColor(2, 2, color.BLOCK);
     changeColor(1, 2, color.BLOCK);
@@ -51,8 +51,11 @@ function App() {
   const changeColor = (row: number, col: number, action: string) => {
     const nodeElement = document.getElementById(`${row}-${col}`);
     if (action === color.START) nodeElement?.classList.add("bg-blue-200");
-    if (action === color.GOAL) nodeElement?.classList.add("bg-yellow-200");
-    if (action === color.BLOCK) nodeElement?.classList.add("bg-blue-400");
+    else if (action === color.GOAL) nodeElement?.classList.add("bg-yellow-200");
+    else if (action === color.BLOCK) nodeElement?.classList.add("bg-blue-400");
+    else if (action === color.VISITED)
+      nodeElement?.classList.add("bg-green-400");
+    else nodeElement?.classList.add("bg-red-300");
   };
 
   return (
@@ -62,6 +65,7 @@ function App() {
         className="buttons"
         onClick={() => {
           bfs(<Node row={1} col={1}></Node>);
+          // console.log("hehe");
         }}
       >
         Start BFS
