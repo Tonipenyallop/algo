@@ -15,6 +15,13 @@ export default function bfs(
 
   const currentElement = document.getElementById(`${currentRow}_${currentCol}`);
   visited.add(`${currentRow}_${currentCol}`);
+  // avoiding block
+
+  if (currentElement?.classList.contains("bg-yellow-200")) {
+    currentElement?.classList.add("bg-red-500");
+    return;
+  }
+
   if (currentElement?.classList.contains("bg-blue-400")) return;
   currentElement?.classList.add("bg-green-300");
 

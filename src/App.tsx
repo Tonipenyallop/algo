@@ -26,13 +26,19 @@ function App() {
 
   useEffect(() => {
     changeColor(0, 0, color.START);
-    changeColor(0, 1, color.VISITED);
-    changeColor(3, 3, color.GOAL);
-    changeColor(2, 2, color.BLOCK);
+    // changeColor(3, 3, color.GOAL);
+    // changeColor(2, 2, color.BLOCK);
+    // changeColor(1, 2, color.BLOCK);
+    // changeColor(4, 2, color.BLOCK);
+    // changeColor(2, 2, color.BLOCK);
+
+    //
+    changeColor(3, 2, color.BLOCK);
+    changeColor(0, 2, color.BLOCK);
     changeColor(1, 2, color.BLOCK);
     changeColor(4, 2, color.BLOCK);
     changeColor(2, 2, color.BLOCK);
-    changeColor(2, 2, color.BLOCK);
+    changeColor(3, 3, color.GOAL);
   });
 
   const changeColor = (row: number, col: number, action: string) => {
