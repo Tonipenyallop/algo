@@ -36,7 +36,7 @@ function App() {
   });
 
   const changeColor = (row: number, col: number, action: string) => {
-    const nodeElement = document.getElementById(`${row}-${col}`);
+    const nodeElement = document.getElementById(`${row}_${col}`);
     if (action === color.START) nodeElement?.classList.add("bg-blue-200");
     else if (action === color.GOAL) nodeElement?.classList.add("bg-yellow-200");
     else if (action === color.BLOCK) nodeElement?.classList.add("bg-blue-400");
@@ -51,7 +51,7 @@ function App() {
       <button
         className="buttons"
         onClick={() => {
-          bfs(<Node row={0} col={0}></Node>, visited);
+          bfs(Node({ row: 0, col: 0 }), visited);
           // console.log("hehe");
         }}
       >
@@ -63,7 +63,7 @@ function App() {
           return (
             <div className="flex" key={row}>
               {e.map((_: number, col: number) => {
-                return <Node row={row} col={col} key={`${row}-${col}`} />;
+                return <Node row={row} col={col} key={`${row}_${col}`} />;
               })}
             </div>
           );
