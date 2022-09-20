@@ -5,20 +5,7 @@ import Node from "./components/Node";
 import "./input.css";
 import bfs from "./methods/bfs";
 function App() {
-  const dfs = (matrix: number[][]): boolean => {
-    const [ROWS, COLS] = [matrix.length, matrix[0].length];
-
-    const queue = [[0, 0]];
-    const directions = [
-      [1, 0],
-      [-1, 0],
-      [0, 1],
-      [0, -1],
-    ];
-    let visited = [];
-
-    return false;
-  };
+  let visited: Set<JSX.Element> = new Set();
 
   const arr = [
     [0, 0, 0, 0, 0],
@@ -64,7 +51,7 @@ function App() {
       <button
         className="buttons"
         onClick={() => {
-          bfs(<Node row={1} col={1}></Node>);
+          bfs(<Node row={0} col={0}></Node>, visited);
           // console.log("hehe");
         }}
       >
