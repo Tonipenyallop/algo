@@ -15,7 +15,7 @@ export default function bfs(
 
   const currentElement = document.getElementById(`${currentRow}_${currentCol}`);
   visited.add(`${currentRow}_${currentCol}`);
-
+  if (currentElement?.classList.contains("bg-blue-400")) return;
   currentElement?.classList.add("bg-green-300");
 
   bfs(Node({ row: currentRow + 1, col: currentCol }), visited, ROWS, COLS);
