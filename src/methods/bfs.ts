@@ -1,52 +1,33 @@
 import Node from "../components/Node";
 export default function bfs(
   inputNode: JSX.Element | null,
-  visited: Set<JSX.Element>
+  visited: Set<string>,
+  ROWS: number,
+  COLS: number
 ) {
-  console.log(inputNode);
-  if (inputNode == null || visited.has(inputNode)) return;
-
-  visited.add(inputNode);
-
+  if (inputNode == null) return;
   const current = inputNode;
-
   const currentRow = Number(current?.props.id.split("_")[0]);
   const currentCol = Number(current?.props.id.split("_")[1]);
-  console.log(currentRow, currentCol);
+
+  if (!isInRange(currentRow, ROWS) || !isInRange(currentCol, COLS)) return;
+  if (visited.has(`${currentRow}_${currentCol}`)) return;
+
   const currentElement = document.getElementById(`${currentRow}_${currentCol}`);
-  if (!currentElement) return;
-  console.log(currentElement);
+  visited.add(`${currentRow}_${currentCol}`);
+
   currentElement?.classList.add("bg-green-300");
 
-  // bfs(document.getElementById( `${currentRow + 1}-${currentCol}`), visited);
-  // bfs(currentElement, visited)
-
-  bfs(Node({ row: currentRow + 1, col: currentCol }), visited);
-  bfs(Node({ row: currentRow - 1, col: currentCol }), visited);
-  bfs(Node({ row: currentRow, col: currentCol + 1 }), visited);
-  bfs(Node({ row: currentRow, col: currentCol - 1 }), visited);
-  console.log("finis");
-  // }
-
-  // while (queue.length !== 0) {
-  //   const currentNode = queue.shift();
-  //
-  // const directions = [
-  //   [1, 0],
-  //   [-1, 0],
-  //   [0, 1],
-  //   [0, -1],
-  // ];
-  // for (let direction of directions) {
-  //   let [directionRow, directionCol] = [direction[0], direction[1]];
-  //   const a = document.getElementById(`${directionRow}-${directionCol}`);
-  //   if (a){
-  //     queue.push(a)
-  //   }
-  //   console.log(a);
-  //   // bfs()
-  // }
-  //
-  // console.log(queue);
-  // }
+  bfs(Node({ row: currentRow + 1, col: currentCol }), visited, ROWS, COLS);
+  bfs(Node({ row: currentRow - 1, col: currentCol }), visited, ROWS, COLS);
+  bfs(Node({ row: currentRow, col: currentCol + 1 }), visited, ROWS, COLS);
+  bfs(Node({ row: currentRow, col: currentCol - 1 }), visited, ROWS, COLS);
+  console.log(visited);
 }
+
+function isInRange(row_col: number, ROWS_COLS: number): boolean {
+  if (0 <= row_col && row_col <= ROWS_COLS) return true;
+  return false;
+}
+
+function isValidInput() {}

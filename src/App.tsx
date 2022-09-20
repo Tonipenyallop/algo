@@ -5,8 +5,8 @@ import Node from "./components/Node";
 import "./input.css";
 import bfs from "./methods/bfs";
 function App() {
-  let visited: Set<JSX.Element> = new Set();
-
+  let visited: Set<string> = new Set();
+  const [ROWS, COLS] = [4, 4];
   const arr = [
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
@@ -51,7 +51,7 @@ function App() {
       <button
         className="buttons"
         onClick={() => {
-          bfs(Node({ row: 0, col: 0 }), visited);
+          bfs(Node({ row: 0, col: 0 }), visited, ROWS, COLS);
           // console.log("hehe");
         }}
       >
