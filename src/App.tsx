@@ -7,16 +7,9 @@ import "./input.css";
 import bfs from "./methods/bfs";
 function App() {
   let visited: Set<string> = new Set();
-  let [color, setColor] = useState<boolean>(false);
+  let [colorFlag, setColorFlag] = useState<boolean>(false);
   const [ROWS, COLS] = [4, 4];
-  // const arr = [
-  //   [0, 0, 0, 0, 0],
-  //   [0, 0, 0, 0, 0],
-  //   [0, 0, 0, 0, 0],
-  //   [0, 0, 0, 0, 0],
-  //   [0, 0, 0, 0, 0],
-  // ];
-  // let arr: number[][] = [[]];
+
   const [arr, setArr] = useState<number[][]>([[]]);
   enum Color {
     START = "start",
@@ -26,18 +19,15 @@ function App() {
     DEFAULT = "default",
   }
 
-  // dfs(arr);
-
   useEffect(() => {
     setArr(arrayCreater());
-    // arrayCreater();
     changeColor(0, 0, Color.START);
     changeColor(3, 3, Color.GOAL);
     changeColor(2, 2, Color.BLOCK);
     changeColor(1, 2, Color.BLOCK);
     changeColor(4, 2, Color.BLOCK);
     changeColor(2, 2, Color.BLOCK);
-
+    setColorFlag(!colorFlag);
     //
     // changeColor(3, 2, color.BLOCK);
     // changeColor(0, 2, color.BLOCK);
@@ -45,7 +35,7 @@ function App() {
     // changeColor(4, 2, color.BLOCK);
     // changeColor(2, 2, color.BLOCK);
     // changeColor(3, 3, color.GOAL);
-  }, []);
+  }, [colorFlag]);
 
   const randomNumberCreater = (): number => {
     return 0;
