@@ -14,7 +14,6 @@ export default function BFSButton({ arr }: props) {
       className="buttons"
       onClick={() => {
         bfs(Node({ row: 0, col: 0 }), visited, ROWS, COLS);
-        // console.log("hehe");
       }}
     >
       Start BFS
