@@ -62,9 +62,8 @@ function App() {
       <button className="buttons">Create 2d array</button>
       <BFSButton arr={arr}></BFSButton>
 
-      <div className=" flex flex-col items-center justify-center mt-6">
-        <Matrix array={arr}></Matrix>
-      </div>
+      <Matrix array={arr}></Matrix>
+
       {/* <div className="bg-green-500 my-3 text-white text-center">True</div> */}
     </div>
   );
