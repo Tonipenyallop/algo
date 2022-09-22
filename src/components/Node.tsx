@@ -15,7 +15,9 @@ export default function Node({ row, col }: Props) {
       node?.classList.contains(Color.GOAL_COLOR)
     )
       return;
-    node?.classList.add("bg-black");
+    if (!node?.classList.contains(Color.BLOCK_COLOR))
+      node?.classList.add("bg-black");
+    else node.classList.remove(Color.BLOCK_COLOR);
   }
 
   return (
