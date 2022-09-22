@@ -1,4 +1,3 @@
-import React from "react";
 import Node from "./Node";
 interface props {
   array: number[][];
