@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import BFSButton from "./components/BFSButton";
 // import { Button } from "react-bootstrap";
 import Login from "./components/Login";
 import Matrix from "./components/Matrix";
@@ -6,9 +7,9 @@ import Node from "./components/Node";
 import "./input.css";
 import bfs from "./methods/bfs";
 function App() {
-  let visited: Set<string> = new Set();
+  // let visited: Set<string> = new Set();
   let [colorFlag, setColorFlag] = useState<boolean>(false);
-  const [ROWS, COLS] = [4, 4];
+  // const [ROWS, COLS] = [4, 4];
 
   const [arr, setArr] = useState<number[][]>([[]]);
   enum Color {
@@ -59,15 +60,7 @@ function App() {
   return (
     <div className="">
       <button className="buttons">Create 2d array</button>
-      <button
-        className="buttons"
-        onClick={() => {
-          bfs(Node({ row: 0, col: 0 }), visited, ROWS, COLS);
-          // console.log("hehe");
-        }}
-      >
-        Start BFS
-      </button>
+      <BFSButton arr={arr}></BFSButton>
 
       <div className=" flex flex-col items-center justify-center mt-6">
         <Matrix array={arr}></Matrix>
