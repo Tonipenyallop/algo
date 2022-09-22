@@ -7,9 +7,8 @@ import Node from "./components/Node";
 import "./input.css";
 import bfs from "./methods/bfs";
 function App() {
-  // let visited: Set<string> = new Set();
   let [colorFlag, setColorFlag] = useState<boolean>(false);
-  // const [ROWS, COLS] = [4, 4];
+  let [isInitialRender, setIsInitialRender] = useState<boolean>(true);
 
   const [arr, setArr] = useState<number[][]>([[]]);
   enum Color {
@@ -21,22 +20,15 @@ function App() {
   }
 
   useEffect(() => {
-    setArr(arrayCreater());
-    changeColor(0, 0, Color.START);
-    changeColor(3, 3, Color.GOAL);
-    changeColor(2, 2, Color.BLOCK);
-    changeColor(1, 2, Color.BLOCK);
-    changeColor(4, 2, Color.BLOCK);
-    changeColor(2, 2, Color.BLOCK);
-    setColorFlag(!colorFlag);
-    //
-    // changeColor(3, 2, color.BLOCK);
-    // changeColor(0, 2, color.BLOCK);
-    // changeColor(1, 2, color.BLOCK);
-    // changeColor(4, 2, color.BLOCK);
-    // changeColor(2, 2, color.BLOCK);
-    // changeColor(3, 3, color.GOAL);
-  }, [colorFlag]);
+    if (isInitialRender) {
+      setArr(arrayCreater());
+      setIsInitialRender(false);
+      setTimeout(() => {
+        changeColor(14, 10, Color.START);
+        changeColor(14, 20, Color.GOAL);
+      }, 500);
+    }
+  }, [colorFlag, isInitialRender]);
 
   const randomNumberCreater = (): number => {
     return 0;
@@ -47,7 +39,7 @@ function App() {
     return arr;
   }
 
-  const changeColor = (row: number, col: number, action: string) => {
+  function changeColor(row: number, col: number, action: string) {
     const nodeElement = document.getElementById(`${row}_${col}`);
     if (action === Color.START) nodeElement?.classList.add("bg-blue-200");
     else if (action === Color.GOAL) nodeElement?.classList.add("bg-yellow-200");
@@ -55,7 +47,8 @@ function App() {
     else if (action === Color.VISITED)
       nodeElement?.classList.add("bg-green-400");
     else nodeElement?.classList.add("bg-red-300");
-  };
+    setColorFlag(!colorFlag);
+  }
 
   return (
     <div className="">
