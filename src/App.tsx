@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BFSButton from "./components/BFSButton";
-// import { Button } from "react-bootstrap";
-import Login from "./components/Login";
+
 import Matrix from "./components/Matrix";
-import Node from "./components/Node";
+
 import "./input.css";
-import bfs from "./methods/bfs";
+
+import Position from "./interfaces/Position";
 function App() {
   let [colorFlag, setColorFlag] = useState<boolean>(false);
   let [isInitialRender, setIsInitialRender] = useState<boolean>(true);
-
   const [arr, setArr] = useState<number[][]>([[]]);
+
   enum Color {
     START = "start",
     VISITED = "visited",
@@ -19,13 +19,16 @@ function App() {
     DEFAULT = "default",
   }
 
+  const START_POSITION: Position = { row: 14, col: 10 };
+  const GOAL_POSITION: Position = { row: 14, col: 20 };
+
   useEffect(() => {
     if (isInitialRender) {
       setArr(arrayCreater());
       setIsInitialRender(false);
       setTimeout(() => {
-        changeColor(14, 10, Color.START);
-        changeColor(14, 20, Color.GOAL);
+        changeColor(START_POSITION, Color.START);
+        changeColor(GOAL_POSITION, Color.GOAL);
       }, 500);
     }
   }, [colorFlag, isInitialRender]);
@@ -39,7 +42,10 @@ function App() {
     return arr;
   }
 
-  function changeColor(row: number, col: number, action: string) {
+  function changeColor(position: Position, action: string) {
+    const row = position.row;
+    const col = position.col;
+
     const nodeElement = document.getElementById(`${row}_${col}`);
     if (action === Color.START) nodeElement?.classList.add("bg-blue-200");
     else if (action === Color.GOAL) nodeElement?.classList.add("bg-yellow-200");
