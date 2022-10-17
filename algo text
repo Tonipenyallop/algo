@@ -1,0 +1,28 @@
+flow
+install django
+pipenv install django
+
+start shell
+pipenv shell
+
+exit
+exit
+
+start project(don't forget comma at the end as well as adding to name of app to project)
+django-admin startproject EXAMPLE_project .
+
+Start app
+python manage.py startapp NAME_OF_APP
+
+run server
+python manage.py runserver
+
+make migrate
+python manage.py makemigrations NAME_OF_FILE
+
+run migration
+python manage.py migrate posts
+
+create superuser
+python manage.py createsuperuser
+
