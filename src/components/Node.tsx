@@ -35,7 +35,6 @@ export default function Node({ row, col }: Props) {
         // }}
         onMouseEnter={changeNodeColor}
       ></div>
-      <div className="">fake data</div>
     </div>
   );
 }
